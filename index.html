@@ -2,87 +2,87 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#080d1b">
-<title>VECTOR ZERO</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#070b16">
+<title>VECTOR ZERO — Neon Frontier</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-:root{--bg:#080d1b;--panel:#111e34;--line:#2a3b58;--mint:#67f2cb;--muted:#91a3bf;--white:#f3f6ff}
+:root{--bg:#070b16;--panel:#101b30;--line:#293a56;--mint:#6cf5d2;--violet:#b39aff;--muted:#95a8c5;--white:#f3f6ff}
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%;background:var(--bg);color:var(--white);font-family:'Space Grotesk',sans-serif}
-button,input{font:inherit}
-button{cursor:pointer}
-.shell{max-width:1450px;margin:auto;padding:20px}
-.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;gap:12px}
-.brand{font-weight:700;font-size:21px;letter-spacing:4px}
+body{background:radial-gradient(ellipse at 48% -20%,#1a3150 0%,#0a1223 48%,#070b16 100%)}
+button,input{font:inherit}button{cursor:pointer}
+.shell{max-width:1500px;margin:auto;padding:20px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+.brand{font-weight:700;font-size:21px;letter-spacing:4px;text-shadow:0 0 22px #6cf5d244}
 .brand small{display:block;color:var(--mint);font:700 9px Rajdhani;letter-spacing:3px;margin-top:3px}
-.status{font:600 10px Rajdhani;letter-spacing:2px;color:#8296b8;white-space:nowrap}
-.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--mint);margin-right:8px;box-shadow:0 0 12px var(--mint)}
+.status{font:600 10px Rajdhani;letter-spacing:2px;color:#9badc8;white-space:nowrap}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--mint);margin-right:8px;box-shadow:0 0 13px var(--mint)}
 .layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(280px,.8fr);gap:18px}
-.panel{background:linear-gradient(145deg,#14213a,#0d172a);border:1px solid var(--line);border-radius:17px;padding:16px;min-width:0}
+.panel{background:linear-gradient(145deg,#14213aeb,#0b1426f2);border:1px solid #30425f;border-radius:17px;padding:16px;min-width:0;box-shadow:0 18px 55px #0003,inset 0 1px #ffffff0a}
 .heading{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:13px}
-.heading h1{font:700 27px Rajdhani;margin:3px 0}
+.heading h1{font:700 29px Rajdhani;margin:3px 0;letter-spacing:1px}
 .heading p{font-size:10px;color:var(--muted);margin:0}
 .eyebrow{font:700 9px Rajdhani;letter-spacing:2px;color:var(--mint)}
-.game{height:clamp(450px,55vw,660px);min-height:430px;position:relative;overflow:hidden;border-radius:12px;background:#0d1a2e;border:1px solid #30415b;isolation:isolate}
+.build{font:700 9px Rajdhani;letter-spacing:2px;color:#9cadd0}
+.game{height:clamp(470px,56vw,690px);min-height:440px;position:relative;overflow:hidden;border-radius:13px;background:#070d1c;border:1px solid #3a5070;isolation:isolate;box-shadow:inset 0 0 60px #0008}
 #world{position:absolute;inset:0;z-index:0}
 #world canvas{width:100%;height:100%;display:block}
+.game:after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(180deg,#07102055,transparent 23%,transparent 75%,#07102077);box-shadow:inset 0 0 90px #02050b99}
 .hud{position:absolute;z-index:2;top:12px;left:12px;right:12px;display:flex;justify-content:space-between;gap:8px;pointer-events:none}
 .hgroup{display:flex;gap:7px}
-.hbox{background:#071225dd;border:1px solid #52617d66;padding:8px 10px;border-radius:8px;min-width:62px}
-.hbox label{display:block;font:700 8px Rajdhani;letter-spacing:1px;color:#96a9c8}
-.hbox strong{font:700 18px Rajdhani}
+.hbox{background:#071225dd;border:1px solid #7084a044;padding:8px 10px;border-radius:8px;min-width:62px;backdrop-filter:blur(8px);box-shadow:0 5px 18px #0004}
+.hbox label{display:block;font:700 8px Rajdhani;letter-spacing:1px;color:#9fb2d1}
+.hbox strong{font:700 18px Rajdhani;text-shadow:0 0 12px #ffffff22}
 .health{width:130px}
 .bar{height:4px;background:#34425a;border-radius:5px;margin-top:5px;overflow:hidden}
 .bar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#ff7189,#ffbc8d);transition:width .12s}
-.xp{position:absolute;bottom:12px;left:14px;right:14px;z-index:2;pointer-events:none}
-.xphead{display:flex;justify-content:space-between;font:700 9px Rajdhani;color:#c6baff;margin-bottom:4px}
-.xpbar{height:4px;background:#34425a;border-radius:5px;overflow:hidden}
-.xpbar i{display:block;width:0;height:100%;background:linear-gradient(90deg,#a58aff,var(--mint));transition:width .12s}
-.screen{position:absolute;z-index:5;inset:0;background:#050c19c9;backdrop-filter:blur(7px);display:grid;place-items:center;padding:16px}
+.xp{position:absolute;bottom:12px;left:14px;right:14px;z-index:2;pointer-events:none;text-shadow:0 2px 7px #000}
+.xphead{display:flex;justify-content:space-between;font:700 9px Rajdhani;color:#d0c7ff;margin-bottom:4px}
+.xpbar{height:4px;background:#34425a;border-radius:5px;overflow:hidden;box-shadow:0 0 14px #0008}
+.xpbar i{display:block;width:0;height:100%;background:linear-gradient(90deg,#9d7aff,var(--mint));box-shadow:0 0 12px #9d7aff;transition:width .12s}
+.screen{position:absolute;z-index:5;inset:0;background:#050a17c9;backdrop-filter:blur(8px);display:grid;place-items:center;padding:16px}
 .screen.hidden{display:none}
-.modal{width:min(440px,100%);padding:25px;border:1px solid #40516e;border-radius:16px;background:linear-gradient(145deg,#1a2a46,#0d192e);text-align:center;box-shadow:0 20px 70px #0009}
+.modal{width:min(450px,100%);padding:26px;border:1px solid #50627f;border-radius:16px;background:linear-gradient(145deg,#1b2b48f5,#0b162bf5);text-align:center;box-shadow:0 25px 80px #000b,inset 0 1px #ffffff16}
 .kicker{font:700 9px Rajdhani;letter-spacing:3px;color:var(--mint)}
-.hero{font:700 clamp(35px,5vw,51px) Rajdhani;line-height:.95;margin:14px 0}
+.hero{font:700 clamp(37px,5vw,54px) Rajdhani;line-height:.93;margin:15px 0;text-shadow:0 0 24px #67f2cb30}
 .hero em,.title-small em{font-style:normal;color:var(--mint)}
-.modal p{font-size:11px;color:#a5b4ce;line-height:1.7}
+.modal p{font-size:11px;color:#b0bfd6;line-height:1.75}
 .stats{display:flex;justify-content:center;gap:25px;margin:20px 0}
-.stats b{display:block;font:700 18px Rajdhani}
-.stats span{font:700 8px Rajdhani;color:#8497b9;letter-spacing:1px}
-.primary{border:0;background:linear-gradient(100deg,#67efc8,#a3f3d9);color:#081523;padding:13px 23px;border-radius:8px;font:700 12px Rajdhani;letter-spacing:2px;transition:filter .15s,transform .15s}
+.stats b{display:block;font:700 19px Rajdhani;color:#fff}
+.stats span{font:700 8px Rajdhani;color:#91a6c6;letter-spacing:1px}
+.primary{border:1px solid #a5ffe5;background:linear-gradient(100deg,#62e8c4,#b0ffe4);color:#071522;padding:13px 23px;border-radius:8px;font:700 12px Rajdhani;letter-spacing:2px;box-shadow:0 5px 22px #67f2cb25;transition:filter .15s,transform .15s}
 .primary:hover{filter:brightness(1.1);transform:translateY(-1px)}
 .primary:disabled{opacity:.55;cursor:default;transform:none}
-.footnote{font:600 8px Rajdhani;color:var(--muted);letter-spacing:1px;margin-top:15px}
+.footnote{font:600 8px Rajdhani;color:#9aacc9;letter-spacing:1px;margin-top:15px}
 .title-small{font:700 33px Rajdhani;margin:12px 0}
 .upgrades{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:15px}
-.upgrade{background:#1a2942;border:1px solid #465b78;color:white;padding:12px 7px;border-radius:9px;text-align:left;min-height:125px}
-.upgrade:hover{border-color:var(--mint);background:#203d4a}
+.upgrade{background:linear-gradient(145deg,#1c2e4b,#111d33);border:1px solid #526783;color:white;padding:12px 8px;border-radius:9px;text-align:left;min-height:126px;transition:.15s}
+.upgrade:hover{border-color:var(--mint);background:#203c4a;transform:translateY(-2px)}
 .upgrade span{font-size:22px;color:var(--mint)}
 .upgrade b{display:block;font:700 13px Rajdhani;margin:8px 0 5px}
 .upgrade small{font-size:9px;color:#acbbd3;line-height:1.5;display:block}
-.final{font:700 43px Rajdhani;color:var(--mint)}
+.final{font:700 45px Rajdhani;color:var(--mint);text-shadow:0 0 20px #67f2cb55}
 .save{display:flex;gap:7px;margin:15px 0}
 .save input{flex:1;min-width:0;background:#091428;color:white;border:1px solid #40516e;border-radius:8px;padding:10px;outline:none}
 .save input:focus{border-color:var(--mint)}
 .side{display:flex;flex-direction:column;gap:13px}
 .side h2{font:700 14px Rajdhani;margin:4px 0 13px;letter-spacing:1px}
 .units{display:flex;flex-direction:column;gap:8px}
-.unit{display:flex;align-items:center;gap:10px;text-align:left;width:100%;background:#ffffff08;color:white;border:1px solid #42516c66;border-radius:10px;padding:10px}
-.unit.selected{border-color:var(--mint);background:#67f2cb12}
-.art{width:41px;height:41px;border-radius:10px;display:grid;place-items:center;flex:none;background:linear-gradient(145deg,#1a625f,#253454)}
-.art span{width:17px;height:17px;border-radius:50%;background:var(--mint);box-shadow:0 0 16px var(--mint)}
-.bloom .art{background:#285642}
-.bloom .art span{background:#a9edaa;box-shadow:0 0 16px #a9edaa}
-.nova .art{background:#503e77}
-.nova .art span{background:#d0a8ff;box-shadow:0 0 16px #d0a8ff}
+.unit{display:flex;align-items:center;gap:10px;text-align:left;width:100%;background:#ffffff08;color:white;border:1px solid #42516c66;border-radius:10px;padding:10px;transition:.15s}
+.unit:hover{border-color:#8ba3c5;background:#ffffff0d}
+.unit.selected{border-color:var(--mint);background:#67f2cb12;box-shadow:inset 0 0 20px #67f2cb0a}
+.art{width:43px;height:43px;border-radius:10px;display:grid;place-items:center;flex:none;background:linear-gradient(145deg,#1a625f,#253454);position:relative;overflow:hidden}
+.art span{width:17px;height:17px;border-radius:5px;transform:rotate(45deg);background:var(--mint);box-shadow:0 0 16px var(--mint)}
+.bloom .art{background:#285642}.bloom .art span{background:#a9edaa;box-shadow:0 0 16px #a9edaa}
+.nova .art{background:#503e77}.nova .art span{background:#d0a8ff;box-shadow:0 0 16px #d0a8ff}
 .unit b{display:block;font:700 14px Rajdhani;letter-spacing:1px}
 .unit small{display:block;font-size:8px;color:#9cacc7;margin-top:3px}
 .unit em{font:700 8px Rajdhani;color:var(--mint);margin-left:auto;font-style:normal;white-space:nowrap}
 .profile{font-size:10px;color:#9cacc7;background:#091629;padding:11px;border-radius:8px;margin-top:10px;line-height:1.6}
 .keys{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
 .keys div{background:#ffffff09;border:1px solid #42516c55;border-radius:7px;text-align:center;padding:9px 2px}
-.keys b{display:block;font:700 11px Rajdhani}
-.keys small{font-size:8px;color:#9cacc7}
+.keys b{display:block;font:700 11px Rajdhani}.keys small{font-size:8px;color:#9cacc7}
 .line{display:flex;justify-content:space-between;gap:8px;font:600 9px Rajdhani;color:#96a8c6;padding:7px 0;border-bottom:1px solid #ffffff12}
 .line b{color:#e5ecfb;text-align:right}
 .ranks{display:flex;flex-direction:column;gap:6px}
@@ -91,1858 +91,249 @@ button{cursor:pointer}
 .gamefoot{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:12px 3px 0;font:600 9px Rajdhani;color:#8fa2c1;letter-spacing:1px}
 kbd{background:#23334d;border:1px solid #50617a;border-radius:4px;padding:3px 5px;color:white}
 .errorbox{max-width:540px;margin:40px auto;padding:24px;background:#211b2d;border:1px solid #a65b75;border-radius:12px;color:#fff;font:13px/1.7 sans-serif}
-.errorbox b{color:#ff9db0}
-.errorbox code{color:#aaf4df;overflow-wrap:anywhere}
-@media(max-width:950px){
-.layout{grid-template-columns:1fr}
-.game{height:560px}
-.side{display:grid;grid-template-columns:1fr 1fr}
-.side .rankpanel{grid-column:1/-1}
-}
-@media(max-width:600px){
-.shell{padding:10px}
-.brand{font-size:16px}
-.status{font-size:8px}
-.panel{padding:9px}
-.game{height:510px;min-height:460px}
-.heading h1{font-size:22px}
-.heading p{font-size:9px}
-.hbox{padding:6px}
-.hbox strong{font-size:15px}
-.health{width:105px}
-.side{display:flex}
-.modal{padding:19px 14px}
-.upgrade{padding:9px 5px}
-.upgrade small{font-size:8px}
-.stats{gap:16px}
-}
+.errorbox b{color:#ff9db0}.errorbox code{color:#aaf4df;overflow-wrap:anywhere}
+@media(max-width:950px){.layout{grid-template-columns:1fr}.game{height:590px}.side{display:grid;grid-template-columns:1fr 1fr}.side .rankpanel{grid-column:1/-1}}
+@media(max-width:600px){.shell{padding:10px}.brand{font-size:16px}.status{font-size:8px}.panel{padding:9px}.game{height:520px;min-height:470px}.heading h1{font-size:23px}.heading p{font-size:9px}.hbox{padding:6px}.hbox strong{font-size:15px}.health{width:105px}.side{display:flex}.modal{padding:19px 14px}.upgrade{padding:9px 5px}.upgrade small{font-size:8px}.stats{gap:16px}}
 </style>
 </head>
-
 <body>
 <div class="shell">
-
 <header class="top">
-  <div class="brand">
-    VECTOR ZERO
-    <small>ARENA PROTOCOL /// SURVIVAL DIVISION</small>
-  </div>
-  <div class="status">
-    <span class="dot"></span>SECTOR 07 / ONLINE
-  </div>
+  <div class="brand">VECTOR ZERO<small>ARENA PROTOCOL /// SURVIVAL DIVISION</small></div>
+  <div class="status"><span class="dot"></span>SECTOR 07 / ONLINE</div>
 </header>
-
 <main class="layout">
-
 <section class="panel">
-
-  <div class="heading">
-    <div>
-      <div class="eyebrow">COMBAT SIMULATION 01</div>
-      <h1>NEON FRONTIER</h1>
-      <p>움직임으로 살아남고, 진화해서 최종 웨이브를 돌파하라.</p>
-    </div>
-    <div class="eyebrow">BUILD 1.1</div>
-  </div>
-
+  <div class="heading"><div><div class="eyebrow">COMBAT SIMULATION 02</div><h1>NEON FRONTIER</h1><p>움직임으로 살아남고, 진화해서 최종 웨이브를 돌파하라.</p></div><div class="build">VISUAL OVERHAUL / 2.0</div></div>
   <div class="game">
-
     <div id="world"></div>
-
     <div class="hud">
       <div class="hgroup">
-        <div class="hbox health">
-          <label>VITALITY</label>
-          <strong id="hp">100</strong>
-          <div class="bar"><i id="hpbar"></i></div>
-        </div>
-        <div class="hbox">
-          <label>LEVEL</label>
-          <strong id="level">01</strong>
-        </div>
+        <div class="hbox health"><label>VITALITY</label><strong id="hp">100</strong><div class="bar"><i id="hpbar"></i></div></div>
+        <div class="hbox"><label>LEVEL</label><strong id="level">01</strong></div>
       </div>
-
       <div class="hgroup">
-        <div class="hbox">
-          <label>TIME LEFT</label>
-          <strong id="time">02:30</strong>
-        </div>
-        <div class="hbox">
-          <label>ELIMINATED</label>
-          <strong id="kills">000</strong>
-        </div>
+        <div class="hbox"><label>TIME LEFT</label><strong id="time">02:30</strong></div>
+        <div class="hbox"><label>ELIMINATED</label><strong id="kills">000</strong></div>
       </div>
     </div>
-
-    <div class="xp">
-      <div class="xphead">
-        <span>EVOLUTION SYNC</span>
-        <b id="xptext">0 / 30</b>
-      </div>
-      <div class="xpbar"><i id="xpbar"></i></div>
-    </div>
-
-    <div class="screen" id="start">
-      <div class="modal">
-        <div class="kicker">VECTOR ZERO // DEPLOYMENT</div>
-        <div class="hero">THE ARENA<br><em>IS YOURS.</em></div>
-        <p>적의 패턴을 읽고, 공격을 피하고, 더 강한 유닛으로 진화하라.</p>
-
-        <div class="stats">
-          <span><b>150s</b>SURVIVAL</span>
-          <span><b>AUTO</b>TARGETING</span>
-          <span><b>∞</b>EVOLUTION</span>
-        </div>
-
-        <button class="primary" id="startBtn">DEPLOY UNIT ↗</button>
-        <div class="footnote">WASD 이동 · SPACE 대시 · P 일시정지</div>
-      </div>
-    </div>
-
-    <div class="screen hidden" id="pause">
-      <div class="modal">
-        <div class="kicker">SIMULATION PAUSED</div>
-        <div class="title-small">잠깐 <em>정지.</em></div>
-        <p>다음 움직임을 준비해.</p>
-        <button class="primary" id="resumeBtn">RESUME ↗</button>
-      </div>
-    </div>
-
-    <div class="screen hidden" id="upgrade">
-      <div class="modal">
-        <div class="kicker">EVOLUTION AVAILABLE</div>
-        <div class="title-small">능력을 <em>선택해.</em></div>
-        <p>전투 능력을 강화할 수 있어.</p>
-        <div class="upgrades" id="choices"></div>
-      </div>
-    </div>
-
-    <div class="screen hidden" id="result">
-      <div class="modal">
-        <div class="kicker" id="resultKicker">TRIAL COMPLETE</div>
-        <div class="title-small" id="resultTitle">생존 성공.</div>
-        <div class="final" id="finalScore">00000</div>
-        <p id="resultText"></p>
-
-        <div class="save">
-          <input id="nickname" maxlength="12" placeholder="닉네임" autocomplete="off">
-          <button class="primary" id="saveBtn">SAVE</button>
-        </div>
-
-        <button class="primary" id="retryBtn">RETRY</button>
-        <button class="primary" id="homeBtn">TITLE</button>
-      </div>
-    </div>
-
+    <div class="xp"><div class="xphead"><span>EVOLUTION SYNC</span><b id="xptext">0 / 30</b></div><div class="xpbar"><i id="xpbar"></i></div></div>
+    <div class="screen" id="start"><div class="modal">
+      <div class="kicker">VECTOR ZERO // DEPLOYMENT</div><div class="hero">THE ARENA<br><em>IS YOURS.</em></div>
+      <p>적의 패턴을 읽고, 공격을 피하고, 더 강한 유닛으로 진화하라.</p>
+      <div class="stats"><span><b>150s</b>SURVIVAL</span><span><b>AUTO</b>TARGETING</span><span><b>3D</b>ARENA</span></div>
+      <button class="primary" id="startBtn">DEPLOY UNIT ↗</button><div class="footnote">WASD 이동 · SPACE 대시 · P 일시정지</div>
+    </div></div>
+    <div class="screen hidden" id="pause"><div class="modal"><div class="kicker">SIMULATION PAUSED</div><div class="title-small">잠깐 <em>정지.</em></div><p>다음 움직임을 준비해.</p><button class="primary" id="resumeBtn">RESUME ↗</button></div></div>
+    <div class="screen hidden" id="upgrade"><div class="modal"><div class="kicker">EVOLUTION AVAILABLE</div><div class="title-small">능력을 <em>선택해.</em></div><p>전투 능력을 강화할 수 있어.</p><div class="upgrades" id="choices"></div></div></div>
+    <div class="screen hidden" id="result"><div class="modal"><div class="kicker" id="resultKicker">TRIAL COMPLETE</div><div class="title-small" id="resultTitle">생존 성공.</div><div class="final" id="finalScore">00000</div><p id="resultText"></p><div class="save"><input id="nickname" maxlength="12" placeholder="닉네임" autocomplete="off"><button class="primary" id="saveBtn">SAVE</button></div><button class="primary" id="retryBtn">RETRY</button> <button class="primary" id="homeBtn">TITLE</button></div></div>
   </div>
-
-  <div class="gamefoot">
-    <span>
-      <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> MOVE　
-      <kbd>SPACE</kbd> DASH　
-      <kbd>P</kbd> PAUSE
-    </span>
-    <span>BEST <b id="best">0</b></span>
-  </div>
-
+  <div class="gamefoot"><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> MOVE　 <kbd>SPACE</kbd> DASH　 <kbd>P</kbd> PAUSE</span><span>BEST <b id="best">0</b></span></div>
 </section>
-
 <aside class="side">
-
-  <section class="panel">
-    <div class="eyebrow">UNIT SELECTION</div>
-    <h2>CHOOSE YOUR OPERATOR</h2>
-
+  <section class="panel"><div class="eyebrow">UNIT SELECTION</div><h2>CHOOSE YOUR OPERATOR</h2>
     <div class="units">
-
-      <button class="unit selected" data-unit="volt">
-        <div class="art"><span></span></div>
-        <div>
-          <b>VOLT</b>
-          <small>ALL-ROUNDER / BALANCED</small>
-        </div>
-        <em>SELECTED</em>
-      </button>
-
-      <button class="unit bloom" data-unit="bloom">
-        <div class="art"><span></span></div>
-        <div>
-          <b>BLOOM</b>
-          <small>DEFENDER / HIGH VITALITY</small>
-        </div>
-        <em>SELECT</em>
-      </button>
-
-      <button class="unit nova" data-unit="nova">
-        <div class="art"><span></span></div>
-        <div>
-          <b>NOVA</b>
-          <small>STRIKER / RAPID FIRE</small>
-        </div>
-        <em>SELECT</em>
-      </button>
-
+      <button class="unit selected" data-unit="volt"><div class="art"><span></span></div><div><b>VOLT</b><small>ALL-ROUNDER / BALANCED</small></div><em>SELECTED</em></button>
+      <button class="unit bloom" data-unit="bloom"><div class="art"><span></span></div><div><b>BLOOM</b><small>DEFENDER / HIGH VITALITY</small></div><em>SELECT</em></button>
+      <button class="unit nova" data-unit="nova"><div class="art"><span></span></div><div><b>NOVA</b><small>STRIKER / RAPID FIRE</small></div><em>SELECT</em></button>
     </div>
-
-    <div class="profile" id="profile">
-      균형 잡힌 기본 전투 유닛. 어떤 상황에도 대응할 수 있다.
-    </div>
+    <div class="profile" id="profile">균형 잡힌 기본 전투 유닛. 어떤 상황에도 대응할 수 있다.</div>
   </section>
-
-  <section class="panel">
-    <div class="eyebrow">FIELD MANUAL</div>
-    <h2>COMBAT SYSTEM</h2>
-
-    <div class="keys">
-      <div><b>W A S D</b><small>이동</small></div>
-      <div><b>SPACE</b><small>대시</small></div>
-      <div><b>P</b><small>일시정지</small></div>
-      <div><b>AUTO</b><small>공격</small></div>
-    </div>
-
-    <div style="margin-top:12px">
-      <div class="line"><span>MISSION</span><b>150초 생존</b></div>
-      <div class="line"><span>COMBAT</span><b>자동 조준 / 투사체</b></div>
-      <div class="line"><span>EVOLUTION</span><b>경험치 / 능력 선택</b></div>
-    </div>
+  <section class="panel"><div class="eyebrow">FIELD MANUAL</div><h2>COMBAT SYSTEM</h2>
+    <div class="keys"><div><b>W A S D</b><small>이동</small></div><div><b>SPACE</b><small>대시</small></div><div><b>P</b><small>일시정지</small></div><div><b>AUTO</b><small>공격</small></div></div>
+    <div style="margin-top:12px"><div class="line"><span>MISSION</span><b>150초 생존</b></div><div class="line"><span>COMBAT</span><b>자동 조준 / 에너지 볼트</b></div><div class="line"><span>EVOLUTION</span><b>경험치 / 능력 선택</b></div></div>
   </section>
-
-  <section class="panel rankpanel">
-    <div class="eyebrow">LOCAL COMPETITION</div>
-    <h2>HALL OF VECTORS</h2>
-    <div class="ranks" id="ranks">
-      <div class="rank">아직 기록이 없어.</div>
-    </div>
-  </section>
-
+  <section class="panel rankpanel"><div class="eyebrow">LOCAL COMPETITION</div><h2>HALL OF VECTORS</h2><div class="ranks" id="ranks"><div class="rank">아직 기록이 없어.</div></div></section>
 </aside>
 </main>
 </div>
-
 <script type="module">
 'use strict';
-
-// ========================================
-// 1. 기본 설정
-// ========================================
-
-const $ = (id) => document.getElementById(id);
-const mount = $('world');
-
-const units = {
-  volt: {
-    color:0x67f2cb,
-    trim:0xb39aff,
-    hp:100,
-    speed:8.0,
-    damage:18,
-    rate:0.58,
-    desc:'균형 잡힌 기본 전투 유닛. 어떤 상황에도 대응할 수 있다.'
-  },
-
-  bloom: {
-    color:0x9ee6a5,
-    trim:0xffd57c,
-    hp:135,
-    speed:7.0,
-    damage:17,
-    rate:0.68,
-    desc:'높은 체력과 안정적인 생존력을 지닌 방어형 유닛.'
-  },
-
-  nova: {
-    color:0xc6a4ff,
-    trim:0xff8791,
-    hp:88,
-    speed:8.8,
-    damage:14,
-    rate:0.39,
-    desc:'빠른 연사와 민첩한 움직임을 갖춘 공격형 유닛.'
-  }
+const $=id=>document.getElementById(id);
+const mount=$('world');
+const R=15.5;
+const units={
+ volt:{color:0x67f2cb,trim:0xb39aff,hp:100,speed:8,damage:18,rate:.58,desc:'균형 잡힌 기본 전투 유닛. 어떤 상황에도 대응할 수 있다.'},
+ bloom:{color:0x9ee6a5,trim:0xffd57c,hp:135,speed:7,damage:17,rate:.68,desc:'높은 체력과 안정적인 생존력을 지닌 방어형 유닛.'},
+ nova:{color:0xc6a4ff,trim:0xff8791,hp:88,speed:8.8,damage:14,rate:.39,desc:'빠른 연사와 민첩한 움직임을 갖춘 공격형 유닛.'}
 };
-
-const upgrades = [
-  {
-    icon:'✦',
-    name:'출력 증폭',
-    desc:'공격력 25% 증가',
-    apply:p=>{p.damage*=1.25;}
-  },
-  {
-    icon:'⌁',
-    name:'고속 연사',
-    desc:'공격 간격 18% 감소',
-    apply:p=>{p.rate*=0.82;}
-  },
-  {
-    icon:'✚',
-    name:'보호막 강화',
-    desc:'최대 체력 +25, 체력 회복',
-    apply:p=>{
-      p.maxHp+=25;
-      p.hp=Math.min(p.maxHp,p.hp+30);
-    }
-  },
-  {
-    icon:'➤',
-    name:'경량 프레임',
-    desc:'이동 속도 12% 증가',
-    apply:p=>{p.speed*=1.12;}
-  },
-  {
-    icon:'◎',
-    name:'수집 범위',
-    desc:'경험치 수집 거리 증가',
-    apply:p=>{p.magnet+=2;}
-  },
-  {
-    icon:'↗',
-    name:'관통 코어',
-    desc:'투사체가 적을 하나 더 관통',
-    apply:p=>{p.pierce++;}
-  },
-  {
-    icon:'♥',
-    name:'긴급 수복',
-    desc:'체력 45 회복',
-    apply:p=>{p.hp=Math.min(p.maxHp,p.hp+45);}
-  }
+const upgrades=[
+ {icon:'✦',name:'출력 증폭',desc:'공격력 25% 증가',apply:p=>p.damage*=1.25},
+ {icon:'⌁',name:'고속 연사',desc:'공격 간격 18% 감소',apply:p=>p.rate*=.82},
+ {icon:'✚',name:'보호막 강화',desc:'최대 체력 +25, 체력 회복',apply:p=>{p.maxHp+=25;p.hp=Math.min(p.maxHp,p.hp+30)}},
+ {icon:'➤',name:'경량 프레임',desc:'이동 속도 12% 증가',apply:p=>p.speed*=1.12},
+ {icon:'◎',name:'수집 범위',desc:'경험치 수집 거리 증가',apply:p=>p.magnet+=2},
+ {icon:'↗',name:'관통 코어',desc:'추가 적 관통',apply:p=>p.pierce++},
+ {icon:'♥',name:'긴급 수복',desc:'체력 45 회복',apply:p=>p.hp=Math.min(p.maxHp,p.hp+45)}
 ];
+let THREE,scene,camera,renderer,arena,player,playerMesh,unitId='volt',state='menu';
+let elapsed=0,left=150,score=0,kills=0,level=1,xp=0,need=30;
+let spawnClock=0,fireClock=0,invuln=0,dashTime=0,dashWait=0,dashX=0,dashZ=-1;
+let lastMoveX=0,lastMoveZ=-1,cameraShake=0;
+let enemies=[],bullets=[],orbs=[],particles=[],keys=Object.create(null);
+const $state={start:'menu',pause:'pause',upgrade:'upgrade',result:'result'};
 
-// ========================================
-// 2. 게임 변수
-// ========================================
+function mat(color,rough=.4,metal=.25,emissive=0,intensity=0){return new THREE.MeshStandardMaterial({color,roughness:rough,metalness:metal,emissive,emissiveIntensity:intensity})}
+function add(parent,geometry,material,x=0,y=0,z=0,rx=0,ry=0,rz=0){const o=new THREE.Mesh(geometry,material);o.position.set(x,y,z);o.rotation.set(rx,ry,rz);parent.add(o);return o}
+function box(parent,w,h,d,material,x,y,z,rx=0,ry=0,rz=0){const o=add(parent,new THREE.BoxGeometry(w,h,d),material,x,y,z);o.rotation.set(rx,ry,rz);return o}
+function disposeObject(root){if(!root)return;root.traverse?.(o=>{if(o.geometry)o.geometry.dispose();if(o.material){if(Array.isArray(o.material))o.material.forEach(m=>m.dispose());else o.material.dispose()}});if(root.parent)root.parent.remove(root)}
+function clearList(list){for(const item of list)disposeObject(item.mesh||item);list.length=0}
+function safeGet(key,fallback=''){try{return localStorage.getItem(key)??fallback}catch{return fallback}}
+function safeSet(key,value){try{localStorage.setItem(key,String(value));return true}catch(e){console.warn('저장할 수 없어.',e);return false}}
+function getScores(){try{const a=JSON.parse(safeGet('vzScores','[]'));return Array.isArray(a)?a.filter(v=>v&&typeof v.name==='string'&&Number.isFinite(Number(v.score))):[]}catch{return[]}}
 
-let THREE = null;
-let scene = null;
-let camera = null;
-let renderer = null;
-let arena = null;
-let player = null;
-let playerMesh = null;
-
-let unitId = 'volt';
-let state = 'menu';
-
-let elapsed = 0;
-let left = 150;
-let score = 0;
-let kills = 0;
-let level = 1;
-let xp = 0;
-let need = 30;
-
-let spawnClock = 0;
-let fireClock = 0;
-let invuln = 0;
-let dashTime = 0;
-let dashWait = 0;
-
-let dashX = 0;
-let dashZ = -1;
-let lastMoveX = 0;
-let lastMoveZ = -1;
-
-let enemies = [];
-let bullets = [];
-let orbs = [];
-let particles = [];
-
-const keys = Object.create(null);
-const R = 15.5;
-
-const SCREEN_STATE = {
-  start:'menu',
-  pause:'pause',
-  upgrade:'upgrade',
-  result:'result'
-};
-
-// ========================================
-// 3. 저장 기능
-// ========================================
-
-function safeGet(key,fallback='') {
-  try {
-    const value=localStorage.getItem(key);
-    return value===null?fallback:value;
-  } catch(error) {
-    console.warn('저장 공간을 읽을 수 없어.',error);
-    return fallback;
-  }
+function makeArena(){
+ arena=new THREE.Group();scene.add(arena);
+ const foundation=add(arena,new THREE.CylinderGeometry(R+1.5,R+1.8,1.35,96),mat(0x101b2e,.8,.65),0,-.72,0);foundation.receiveShadow=true;
+ add(arena,new THREE.CylinderGeometry(R,R,.18,96),mat(0x1b2b43,.55,.55),0,-.04,0);
+ const floor=add(arena,new THREE.CircleGeometry(R-.12,96),mat(0x101d31,.72,.35),0,.055,0);floor.rotation.x=-Math.PI/2;
+ const grid=new THREE.GridHelper(31,32,0x47708b,0x29425e);grid.position.y=.075;grid.material.transparent=true;grid.material.opacity=.24;arena.add(grid);
+ for(let r=3.5;r<R;r+=2.8){const ring=add(arena,new THREE.RingGeometry(r-.018,r+.018,96),new THREE.MeshBasicMaterial({color:r%2?0x3c6686:0x3e8c88,transparent:true,opacity:.48,side:THREE.DoubleSide}),0,.09,0);ring.rotation.x=-Math.PI/2}
+ const core=add(arena,new THREE.CylinderGeometry(1.65,2.05,.22,8),mat(0x243b56,.4,.8),0,.18,0);
+ const coreRing=add(arena,new THREE.TorusGeometry(2.35,.055,8,64),new THREE.MeshBasicMaterial({color:0x67f2cb}),0,.31,0);coreRing.rotation.x=Math.PI/2;
+ const inner=add(arena,new THREE.TorusGeometry(1.5,.025,6,64),new THREE.MeshBasicMaterial({color:0x9a82ff,transparent:true,opacity:.8}),0,.33,0);inner.rotation.x=Math.PI/2;
+ const rim=add(arena,new THREE.TorusGeometry(R-.05,.18,10,128),mat(0x55eacb,.25,.65,0x145b57,1.8),0,.18,0);rim.rotation.x=Math.PI/2;
+ const rim2=add(arena,new THREE.TorusGeometry(R+.65,.045,6,128),new THREE.MeshBasicMaterial({color:0x8e76ff,transparent:true,opacity:.72}),0,-.05,0);rim2.rotation.x=Math.PI/2;
+ for(let i=0;i<24;i++){const a=i*Math.PI/12;const x=Math.cos(a)*(R-.7),z=Math.sin(a)*(R-.7);box(arena,.14,.055,1.35,mat(i%2?0x466c86:0x357d7b,.35,.5,i%2?0x142a49:0x103b36,.7),x,.12,z,0,-a,0);}
+ for(let i=0;i<16;i++){
+  const a=i*Math.PI/8,x=Math.cos(a)*(R+.25),z=Math.sin(a)*(R+.25),g=new THREE.Group();g.position.set(x,0,z);g.rotation.y=-a;arena.add(g);
+  add(g,new THREE.CylinderGeometry(.42,.58,1.25,6),mat(0x293d58,.38,.7),0,.52,0);
+  box(g,.52,.1,.62,mat(0x405a78,.3,.7),0,1.12,0);
+  add(g,new THREE.OctahedronGeometry(.2),new THREE.MeshBasicMaterial({color:i%2?0x67f2cb:0xa58aff}),0,1.32,0);
+  box(g,.075,.8,.67,new THREE.MeshBasicMaterial({color:i%2?0x67f2cb:0x9985ff,emissive:i%2?0x3aa88f:0x6650aa,emissiveIntensity:1.2}),0,.58,.34);
+ }
+ for(let i=0;i<8;i++){
+  const a=i*Math.PI/4+.25,x=Math.cos(a)*10.8,z=Math.sin(a)*10.8,g=new THREE.Group();g.position.set(x,0,z);g.rotation.y=-a;arena.add(g);
+  box(g,2.6,.42,.72,mat(0x263c58,.45,.65),0,.25,0);
+  box(g,1.9,.09,.78,mat(0x4d6683,.3,.65),0,.5,0);
+  box(g,.09,.5,.8,new THREE.MeshBasicMaterial({color:0x5aead0,transparent:true,opacity:.75}),-.92,.28,0);
+ }
+ const city=new THREE.Group();scene.add(city);
+ for(let i=0;i<40;i++){
+  const a=i*Math.PI*2/40,rad=24+(i%4)*1.7,h=3+(i*7%9),x=Math.cos(a)*rad,z=Math.sin(a)*rad;
+  const tower=add(city,new THREE.BoxGeometry(1.4+(i%3)*.4,h,1.4),mat(i%2?0x15243a:0x1c2944,.9,.25),x,h/2-1.3,z);
+  tower.rotation.y=a;
+  const stripe=box(city,.055,h*.72,.055,new THREE.MeshBasicMaterial({color:i%3?0x287c7d:0x64539a,transparent:true,opacity:.5}),x+.45,h*.38-1.3,z+.7);
+  stripe.rotation.y=a;
+ }
+ const starPositions=[];for(let i=0;i<520;i++){const a=Math.random()*Math.PI*2,r=34+Math.random()*38,y=4+Math.random()*30;starPositions.push(Math.cos(a)*r,y,Math.sin(a)*r)}
+ const starGeo=new THREE.BufferGeometry();starGeo.setAttribute('position',new THREE.Float32BufferAttribute(starPositions,3));
+ const stars=new THREE.Points(starGeo,new THREE.PointsMaterial({color:0xa8c9ee,size:.12,transparent:true,opacity:.7}));scene.add(stars);
+ arena.userData={coreRing,inner,rim,rim2,stars,city};
 }
 
-function safeSet(key,value) {
-  try {
-    localStorage.setItem(key,String(value));
-    return true;
-  } catch(error) {
-    console.warn('저장 공간에 기록하지 못했어.',error);
-    return false;
-  }
+function makePlayer(){
+ const d=units[unitId],g=new THREE.Group();
+ const armor=mat(d.color,.32,.68,d.color,.22),dark=mat(0x17263d,.42,.75),trim=mat(d.trim,.27,.65,d.trim,.48),glass=mat(0xc5f6ff,.13,.35,0x397b8c,.55);
+ const engine=add(g,new THREE.CylinderGeometry(.25,.42,.42,8),mat(0x263c55,.3,.8,d.color,.3),0,.32,0);
+ const legL=box(g,.28,.58,.32,dark,-.28,.43,0,-.08,0,-.08),legR=box(g,.28,.58,.32,dark,.28,.43,0,-.08,0,.08);
+ const footL=box(g,.42,.16,.5,trim,-.28,.14,.06),footR=box(g,.42,.16,.5,trim,.28,.14,.06);
+ const torso=box(g,.92,.78,.55,armor,0,1.03,0);
+ const chest=box(g,.68,.4,.12,dark,0,1.08,.31);
+ const chestCore=add(g,new THREE.SphereGeometry(.2,16,12),new THREE.MeshBasicMaterial({color:d.color}),0,1.12,.4);
+ const head=box(g,.42,.32,.4,dark,0,1.65,.02);
+ const visor=box(g,.32,.1,.035,glass,0,1.67,.23);
+ const shoulderL=add(g,new THREE.DodecahedronGeometry(.34),armor,-.63,1.35,0);shoulderL.scale.set(1.15,.85,1);
+ const shoulderR=add(g,new THREE.DodecahedronGeometry(.34),armor,.63,1.35,0);shoulderR.scale.set(1.15,.85,1);
+ const armL=add(g,new THREE.CylinderGeometry(.13,.18,.55,8),dark,-.69,.91,0,0,0,-.18);
+ const armR=add(g,new THREE.CylinderGeometry(.13,.18,.55,8),dark,.69,.91,0,0,0,.18);
+ const finL=box(g,.12,.66,.22,trim,-.42,1.42,-.34,-.25,0,-.24);
+ const finR=box(g,.12,.66,.22,trim,.42,1.42,-.34,-.25,0,.24);
+ const ring=add(g,new THREE.TorusGeometry(.88,.035,8,48),new THREE.MeshBasicMaterial({color:d.color,transparent:true,opacity:.85}),0,.82,0);ring.rotation.x=Math.PI/2;
+ const ring2=add(g,new THREE.TorusGeometry(1.12,.018,6,48),new THREE.MeshBasicMaterial({color:d.trim,transparent:true,opacity:.62}),0,.84,0);ring2.rotation.x=Math.PI/2;ring2.rotation.z=.5;
+ const thrusterL=add(g,new THREE.ConeGeometry(.13,.38,8),new THREE.MeshBasicMaterial({color:d.color,transparent:true,opacity:.78}),-.27,.02,0,Math.PI,0,0);
+ const thrusterR=add(g,new THREE.ConeGeometry(.13,.38,8),new THREE.MeshBasicMaterial({color:d.color,transparent:true,opacity:.78}),.27,.02,0,Math.PI,0,0);
+ const shadow=add(g,new THREE.CircleGeometry(.85,32),new THREE.MeshBasicMaterial({color:0x020711,transparent:true,opacity:.42,depthWrite:false}),0,.025,0);shadow.rotation.x=-Math.PI/2;
+ g.userData={torso,head,ring,ring2,chestCore,thrusterL,thrusterR,shoulderL,shoulderR,legL,legR};
+ return g;
 }
+function addPlayer(){if(playerMesh)disposeObject(playerMesh);playerMesh=makePlayer();scene.add(playerMesh);const d=units[unitId];player={x:0,z:0,hp:d.hp,maxHp:d.hp,speed:d.speed,damage:d.damage,rate:d.rate,magnet:3.2,pierce:0,dashCD:2.2,color:d.color}}
 
-function getScores() {
-  try {
-    const data=JSON.parse(safeGet('vzScores','[]'));
-
-    return Array.isArray(data)
-      ? data.filter(v=>v&&typeof v.name==='string'&&Number.isFinite(Number(v.score)))
-      : [];
-
-  } catch(error) {
-    return [];
-  }
+function makeEnemy(type){
+ const g=new THREE.Group();let r=.52,hp=34,speed=4.2,damage=10,value=110,color=0xff718f;
+ const armor=mat(color,.38,.55,color,.28),dark=mat(0x18243a,.45,.7),glow=new THREE.MeshBasicMaterial({color}),white=mat(0xffffff,.2,.2,color,.45);
+ let core;
+ if(type==='runner'){
+  r=.43;hp=22;speed=7;damage=9;value=140;color=0xffc66e;armor.color.setHex(color);armor.emissive.setHex(color);glow.color.setHex(color);
+  core=add(g,new THREE.ConeGeometry(.48,1.15,5),armor,0,.65,0,Math.PI/2,0,0);core.scale.set(1.15,1,.72);
+  box(g,.16,.16,.95,white,0,.72,-.35,0,0,0);
+  const wingL=add(g,new THREE.TetrahedronGeometry(.34),armor,-.48,.64,-.12,0,0,-.5);
+  const wingR=add(g,new THREE.TetrahedronGeometry(.34),armor,.48,.64,-.12,0,0,.5);
+  add(g,new THREE.SphereGeometry(.13,10,8),glow,0,.7,.35);
+ }else if(type==='brute'){
+  r=.78;hp=105;speed=2.7;damage=17;value=270;color=0xb39aff;armor.color.setHex(color);armor.emissive.setHex(color);glow.color.setHex(color);
+  core=box(g,1.05,1.05,.75,armor,0,.9,0);
+  add(g,new THREE.DodecahedronGeometry(.34),dark,0,1.65,0);
+  box(g,.28,.12,.06,glow,0,1.68,.31);
+  const sL=add(g,new THREE.IcosahedronGeometry(.48),armor,-.78,1.22,0);sL.scale.set(1.1,.8,1);
+  const sR=add(g,new THREE.IcosahedronGeometry(.48),armor,.78,1.22,0);sR.scale.set(1.1,.8,1);
+  add(g,new THREE.CylinderGeometry(.19,.25,.72,7),dark,-.35,.27,0,0,0,-.08);
+  add(g,new THREE.CylinderGeometry(.19,.25,.72,7),dark,.35,.27,0,0,0,.08);
+  add(g,new THREE.TorusGeometry(.65,.055,7,32),glow,0,.7,0).rotation.x=Math.PI/2;
+ }else{
+  core=add(g,new THREE.IcosahedronGeometry(.48,1),armor,0,.75,0);
+  add(g,new THREE.TorusGeometry(.7,.045,7,32),glow,0,.72,0).rotation.x=Math.PI/2;
+  for(let i=0;i<4;i++){const a=i*Math.PI/2;box(g,.13,.13,.88,dark,Math.cos(a)*.47,.72,Math.sin(a)*.47,0,-a,0);add(g,new THREE.ConeGeometry(.13,.35,6),armor,Math.cos(a)*.9,.72,Math.sin(a)*.9);}
+  add(g,new THREE.SphereGeometry(.13,10,8),glow,0,.78,.4);
+ }
+ const under=add(g,new THREE.TorusGeometry(r*.75,.025,5,24),new THREE.MeshBasicMaterial({color,transparent:true,opacity:.8}),0,.12,0);under.rotation.x=Math.PI/2;
+ g.userData={r,hp,speed,damage,value,color,core,under,type,contact:0,phase:Math.random()*6};
+ return g;
 }
-
-// ========================================
-// 4. 3D 오브젝트 생성
-// ========================================
-
-function material(color,roughness=0.4,metalness=0.2,emissive=0,intensity=0) {
-  return new THREE.MeshStandardMaterial({
-    color,
-    roughness,
-    metalness,
-    emissive,
-    emissiveIntensity:intensity
-  });
-}
-
-function makeMesh(geometry,mat,parent,x=0,y=0,z=0) {
-  const object=new THREE.Mesh(geometry,mat);
-
-  object.position.set(x,y,z);
-  parent.add(object);
-
-  return object;
-}
-
-function clearGroup(group) {
-  for(const item of group) {
-    const object=item.mesh||item;
-
-    if(object&&object.parent) {
-      object.parent.remove(object);
-    }
-  }
-
-  group.length=0;
-}
-
-function removeWorld() {
-  clearGroup(enemies);
-  clearGroup(bullets);
-  clearGroup(orbs);
-  clearGroup(particles);
-
-  if(playerMesh&&playerMesh.parent) {
-    playerMesh.parent.remove(playerMesh);
-  }
-
-  playerMesh=null;
-  player=null;
-
-  for(const key of Object.keys(keys)) {
-    delete keys[key];
-  }
-}
-
-// ========================================
-// 5. 화면 전환
-// ========================================
-
-function showScreen(id=null) {
-
-  state=id===null
-    ? 'playing'
-    : (SCREEN_STATE[id]||'menu');
-
-  for(const screenId of ['start','pause','upgrade','result']) {
-    $(screenId).classList.toggle('hidden',screenId!==id);
-  }
-}
-
-// ========================================
-// 6. 전투 경기장
-// ========================================
-
-function makeArena() {
-
-  arena=new THREE.Group();
-  scene.add(arena);
-
-  const base=makeMesh(
-    new THREE.CylinderGeometry(R,R,1,96),
-    material(0x152842,0.85,0.2),
-    arena,
-    0,-0.7,0
-  );
-
-  base.receiveShadow=true;
-
-  const floor=makeMesh(
-    new THREE.CircleGeometry(R-0.15,96),
-    material(0x12243a,0.8,0.1),
-    arena,
-    0,-0.15,0
-  );
-
-  floor.rotation.x=-Math.PI/2;
-
-  const grid=new THREE.GridHelper(
-    31,
-    32,
-    0x355b72,
-    0x28445e
-  );
-
-  grid.position.y=-0.12;
-  grid.material.transparent=true;
-  grid.material.opacity=0.28;
-
-  arena.add(grid);
-
-  for(let radius=4;radius<16;radius+=3) {
-
-    const ring=makeMesh(
-      new THREE.RingGeometry(radius-0.02,radius+0.02,96),
-      new THREE.MeshBasicMaterial({
-        color:0x54798c,
-        transparent:true,
-        opacity:0.35,
-        side:THREE.DoubleSide
-      }),
-      arena,
-      0,-0.1,0
-    );
-
-    ring.rotation.x=-Math.PI/2;
-  }
-
-  const rim=makeMesh(
-    new THREE.TorusGeometry(R-0.1,0.16,8,120),
-    material(0x55eacb,0.3,0.5,0x145b57,1.6),
-    arena,
-    0,-0.05,0
-  );
-
-  rim.rotation.x=Math.PI/2;
-
-  for(let i=0;i<12;i++) {
-
-    const angle=i*Math.PI/6;
-    const group=new THREE.Group();
-
-    group.position.set(
-      Math.cos(angle)*(R+0.1),
-      0,
-      Math.sin(angle)*(R+0.1)
-    );
-
-    arena.add(group);
-
-    makeMesh(
-      new THREE.CylinderGeometry(0.45,0.55,0.5,6),
-      material(0x263f5b,0.4,0.55),
-      group,
-      0,-0.25,0
-    );
-
-    const color=i%2?0x8872dc:0x67f2cb;
-
-    makeMesh(
-      new THREE.OctahedronGeometry(0.28),
-      material(color,0.2,0.45,color,1.8),
-      group,
-      0,0.12,0
-    );
-  }
-}
-
-// ========================================
-// 7. 플레이어 생성
-// ========================================
-
-function makePlayer() {
-
-  const data=units[unitId];
-  const group=new THREE.Group();
-
-  const body=material(
-    data.color,
-    0.28,
-    0.4,
-    data.color,
-    0.4
-  );
-
-  const trim=material(
-    data.trim,
-    0.28,
-    0.5,
-    data.trim,
-    0.35
-  );
-
-  const core=makeMesh(
-    new THREE.IcosahedronGeometry(0.65,1),
-    body,
-    group,
-    0,0.8,0
-  );
-
-  core.scale.y=1.1;
-  core.castShadow=true;
-
-  const belt=makeMesh(
-    new THREE.TorusGeometry(0.7,0.06,8,32),
-    trim,
-    group,
-    0,0.65,0
-  );
-
-  belt.rotation.x=Math.PI/2;
-
-  const crystal=makeMesh(
-    new THREE.OctahedronGeometry(0.28),
-    new THREE.MeshStandardMaterial({
-      color:0xffffff,
-      emissive:data.color,
-      emissiveIntensity:2.5
-    }),
-    group,
-    0,1.55,0
-  );
-
-  const aura=makeMesh(
-    new THREE.TorusGeometry(1,0.025,6,48),
-    new THREE.MeshBasicMaterial({
-      color:data.color,
-      transparent:true,
-      opacity:0.7
-    }),
-    group,
-    0,0.12,0
-  );
-
-  aura.rotation.x=Math.PI/2;
-
-  group.userData={
-    core,
-    crystal,
-    aura
-  };
-
-  return group;
-}
-
-function addPlayer() {
-
-  if(playerMesh&&playerMesh.parent) {
-    scene.remove(playerMesh);
-  }
-
-  playerMesh=makePlayer();
-  scene.add(playerMesh);
-
-  const data=units[unitId];
-
-  player={
-    x:0,
-    z:0,
-    hp:data.hp,
-    maxHp:data.hp,
-    speed:data.speed,
-    damage:data.damage,
-    rate:data.rate,
-    magnet:3.2,
-    pierce:0,
-    dashCD:2.2,
-    color:data.color
-  };
-}
-
-// ========================================
-// 8. 적 생성
-// ========================================
-
-function makeEnemy(type) {
-
-  const group=new THREE.Group();
-
-  let radius=0.5;
-  let hp=34;
-  let speed=4.2;
-  let damage=10;
-  let value=110;
-  let color=0xff8999;
-  let geometry=new THREE.IcosahedronGeometry(0.5,1);
-
-  if(type==='runner') {
-
-    radius=0.4;
-    hp=22;
-    speed=7;
-    damage=9;
-    value=140;
-    color=0xffcf79;
-
-    geometry=new THREE.TetrahedronGeometry(0.46);
-
-  }
-
-  if(type==='brute') {
-
-    radius=0.76;
-    hp=105;
-    speed=2.7;
-    damage=17;
-    value=270;
-    color=0xb39aff;
-
-    geometry=new THREE.DodecahedronGeometry(0.75);
-  }
-
-  const body=makeMesh(
-    geometry,
-    material(color,0.35,0.3,color,0.35),
-    group,
-    0,
-    radius+0.1,
-    0
-  );
-
-  body.castShadow=true;
-
-  const ring=makeMesh(
-    new THREE.TorusGeometry(radius*0.8,0.035,6,24),
-    new THREE.MeshBasicMaterial({
-      color,
-      transparent:true,
-      opacity:0.7
-    }),
-    group,
-    0,0.1,0
-  );
-
-  ring.rotation.x=Math.PI/2;
-
-  group.userData={
-    r:radius,
-    hp,
-    speed,
-    damage,
-    value,
-    color,
-    body,
-    ring,
-    type,
-    contact:0,
-    phase:Math.random()*6
-  };
-
-  return group;
-}
-
-function spawnEnemy() {
-
-  if(enemies.length>=34)return;
-
-  const angle=Math.random()*Math.PI*2;
-  const roll=Math.random();
-
-  const type=elapsed<30
-    ? (roll<0.75?'drone':'runner')
-    : (roll<0.48?'drone':roll<0.73?'runner':'brute');
-
-  const enemy=makeEnemy(type);
-  const data=enemy.userData;
-
-  data.hp*=1+elapsed/160;
-
-  const radius=R-1;
-
-  enemy.position.set(
-    Math.cos(angle)*radius,
-    0,
-    Math.sin(angle)*radius
-  );
-
-  scene.add(enemy);
-  enemies.push(enemy);
-}
-
-// ========================================
-// 9. 자동 공격
-// ========================================
-
-function findClosestEnemy() {
-
-  let target=null;
-  let best=14;
-
-  for(const enemy of enemies) {
-
-    const distance=Math.hypot(
-      enemy.position.x-player.x,
-      enemy.position.z-player.z
-    );
-
-    if(distance<best) {
-      best=distance;
-      target=enemy;
-    }
-  }
-
-  return target;
-}
-
-function fireAtTarget() {
-
-  const target=findClosestEnemy();
-
-  if(!target)return;
-
-  const dx=target.position.x-player.x;
-  const dz=target.position.z-player.z;
-
-  const length=Math.hypot(dx,dz)||1;
-
-  const shot=makeMesh(
-    new THREE.SphereGeometry(0.11,10,10),
-    new THREE.MeshBasicMaterial({color:player.color}),
-    scene,
-    player.x,
-    1,
-    player.z
-  );
-
-  bullets.push({
-    mesh:shot,
-    vx:dx/length*18,
-    vz:dz/length*18,
-    life:1.4,
-    damage:player.damage,
-    pierce:player.pierce,
-    hit:new Set()
-  });
-}
-
-// ========================================
-// 10. 경험치와 파티클
-// ========================================
-
-function createOrb(x,z) {
-
-  const group=new THREE.Group();
-
-  makeMesh(
-    new THREE.OctahedronGeometry(0.22),
-    new THREE.MeshStandardMaterial({
-      color:0xd3b5ff,
-      emissive:0x8660ce,
-      emissiveIntensity:2
-    }),
-    group
-  );
-
-  const ring=makeMesh(
-    new THREE.TorusGeometry(0.28,0.02,5,20),
-    new THREE.MeshBasicMaterial({color:0xb39aff}),
-    group
-  );
-
-  ring.rotation.x=Math.PI/2;
-
-  group.position.set(x,0.4,z);
-
-  scene.add(group);
-
-  orbs.push({
-    mesh:group,
-    phase:Math.random()*6
-  });
-}
-
-function burst(x,y,z,color,count=7) {
-
-  for(let i=0;i<count;i++) {
-
-    const object=makeMesh(
-      new THREE.SphereGeometry(0.06,6,6),
-      new THREE.MeshBasicMaterial({
-        color,
-        transparent:true
-      }),
-      scene,
-      x,y,z
-    );
-
-    const angle=Math.random()*Math.PI*2;
-    const speed=1+Math.random()*3;
-
-    particles.push({
-      mesh:object,
-      vx:Math.cos(angle)*speed,
-      vy:Math.random()*3,
-      vz:Math.sin(angle)*speed,
-      life:0.5
-    });
-  }
-}
-
-// ========================================
-// 11. HUD 업데이트
-// ========================================
-
-function updateHUD() {
-
-  if(!player)return;
-
-  $('hp').textContent=String(
-    Math.max(0,Math.ceil(player.hp))
-  );
-
-  $('hpbar').style.width=
-    Math.max(0,player.hp/player.maxHp*100)+'%';
-
-  $('level').textContent=
-    String(level).padStart(2,'0');
-
-  $('time').textContent=
-    `${String(Math.floor(left/60)).padStart(2,'0')}:${String(Math.floor(left%60)).padStart(2,'0')}`;
-
-  $('kills').textContent=
-    String(kills).padStart(3,'0');
-
-  $('xptext').textContent=
-    `${xp} / ${need}`;
-
-  $('xpbar').style.width=
-    Math.min(100,xp/need*100)+'%';
-}
-
-// ========================================
-// 12. 랭킹
-// ========================================
-
-function renderRanks() {
-
-  const host=$('ranks');
-
-  host.replaceChildren();
-
-  const list=getScores()
-    .sort((a,b)=>Number(b.score)-Number(a.score))
-    .slice(0,5);
-
-  if(!list.length) {
-    host.textContent='아직 기록이 없어.';
-    return;
-  }
-
-  list.forEach((entry,index)=> {
-
-    const row=document.createElement('div');
-    row.className='rank';
-
-    const name=document.createElement('span');
-    const value=document.createElement('b');
-
-    name.textContent=`${index+1}. ${entry.name}`;
-    value.textContent=Number(entry.score).toLocaleString();
-
-    row.append(name,value);
-    host.append(row);
-  });
-}
-
-function updateBest() {
-
-  const best=Number(safeGet('vzBest','0'))||0;
-
-  $('best').textContent=
-    Math.floor(best).toLocaleString();
-}
-
-// ========================================
-// 13. 게임 시작
-// ========================================
-
-function startGame() {
-
-  removeWorld();
-
-  elapsed=0;
-  left=150;
-  score=0;
-  kills=0;
-  level=1;
-  xp=0;
-  need=30;
-
-  spawnClock=0.5;
-  fireClock=0.15;
-  invuln=0;
-  dashTime=0;
-  dashWait=0;
-
-  dashX=0;
-  dashZ=-1;
-  lastMoveX=0;
-  lastMoveZ=-1;
-
-  $('saveBtn').disabled=false;
-  $('saveBtn').textContent='SAVE';
-
-  addPlayer();
-
-  updateHUD();
-  showScreen(null);
-}
-
-// ========================================
-// 14. 레벨업과 능력 선택
-// ========================================
-
-function showUpgrade() {
-
-  if(state!=='playing')return;
-
-  showScreen('upgrade');
-
-  const host=$('choices');
-  host.replaceChildren();
-
-  const shuffled=[...upgrades];
-
-  for(let i=shuffled.length-1;i>0;i--) {
-
-    const j=Math.floor(Math.random()*(i+1));
-
-    [shuffled[i],shuffled[j]]=
-    [shuffled[j],shuffled[i]];
-  }
-
-  shuffled.slice(0,3).forEach(upgrade=> {
-
-    const button=document.createElement('button');
-    button.className='upgrade';
-
-    const icon=document.createElement('span');
-    const name=document.createElement('b');
-    const desc=document.createElement('small');
-
-    icon.textContent=upgrade.icon;
-    name.textContent=upgrade.name;
-    desc.textContent=upgrade.desc;
-
-    button.append(icon,name,desc);
-
-    button.addEventListener('click',()=> {
-
-      upgrade.apply(player);
-
-      showScreen(null);
-      updateHUD();
-
-    });
-
-    host.append(button);
-  });
-}
-
-function gainXP() {
-
-  xp+=8;
-
-  if(xp>=need) {
-
-    xp-=need;
-    level++;
-
-    need=30+level*14;
-
-    showUpgrade();
-  }
-}
-
-// ========================================
-// 15. 게임 종료와 점수 저장
-// ========================================
-
-function finish(win) {
-
-  if(state!=='playing')return;
-
-  showScreen('result');
-
-  $('resultKicker').textContent=
-    win?'TRIAL COMPLETE':'SIGNAL LOST';
-
-  $('resultTitle').textContent=
-    win?'생존 성공.':'전투 종료.';
-
-  $('finalScore').textContent=
-    Math.floor(score).toLocaleString();
-
-  $('resultText').textContent=
-    `제거 ${kills}기 · 레벨 ${level} · 생존 ${Math.floor(elapsed)}초`;
-
-  const best=Math.max(
-    score,
-    Number(safeGet('vzBest','0'))||0
-  );
-
-  safeSet('vzBest',Math.floor(best));
-
-  updateBest();
-
-  $('nickname').value=safeGet('vzNick','');
-
-  $('saveBtn').disabled=false;
-  $('saveBtn').textContent='SAVE';
-}
-
-function saveScore() {
-
-  const name=
-    $('nickname').value.trim().slice(0,12)||'PLAYER';
-
-  safeSet('vzNick',name);
-
-  const list=getScores();
-
-  list.push({
-    name,
-    score:Math.floor(score)
-  });
-
-  list.sort((a,b)=>Number(b.score)-Number(a.score));
-
-  safeSet(
-    'vzScores',
-    JSON.stringify(list.slice(0,30))
-  );
-
-  renderRanks();
-
-  $('saveBtn').textContent='SAVED';
-  $('saveBtn').disabled=true;
-}
-
-// ========================================
-// 16. 플레이어 피격
-// ========================================
-
-function hurt(amount) {
-
-  if(invuln>0||state!=='playing')return;
-
-  player.hp-=amount;
-  invuln=0.75;
-
-  burst(
-    player.x,
-    0.8,
-    player.z,
-    0xff718e,
-    10
-  );
-
-  if(player.hp<=0) {
-
-    player.hp=0;
-    finish(false);
-  }
-
-  updateHUD();
-}
-
-// ========================================
-// 17. 플레이어 이동
-// ========================================
-
-function movePlayer(dt) {
-
-  let x=
-    Number(!!(keys.KeyD||keys.ArrowRight))-
-    Number(!!(keys.KeyA||keys.ArrowLeft));
-
-  let z=
-    Number(!!(keys.KeyS||keys.ArrowDown))-
-    Number(!!(keys.KeyW||keys.ArrowUp));
-
-  let length=Math.hypot(x,z);
-
-  if(length>0) {
-
-    x/=length;
-    z/=length;
-
-    lastMoveX=x;
-    lastMoveZ=z;
-  }
-
-  if(dashTime>0) {
-    x=dashX;
-    z=dashZ;
-  }
-
-  const multiplier=dashTime>0?2.65:1;
-
-  player.x+=x*player.speed*multiplier*dt;
-  player.z+=z*player.speed*multiplier*dt;
-
-  const radius=Math.hypot(player.x,player.z);
-  const limit=R-1.2;
-
-  if(radius>limit) {
-
-    player.x*=limit/radius;
-    player.z*=limit/radius;
-  }
-
-  playerMesh.position.set(
-    player.x,
-    Math.sin(elapsed*5)*0.04,
-    player.z
-  );
-
-  if(x||z) {
-    playerMesh.rotation.y=Math.atan2(x,z);
-  }
-
-  playerMesh.userData.core.rotation.y+=dt;
-  playerMesh.userData.crystal.rotation.y-=dt*1.5;
-  playerMesh.userData.aura.rotation.z+=dt;
-
-  playerMesh.visible=
-    invuln<=0||Math.floor(elapsed*18)%2===0;
-}
-
-// ========================================
-// 18. 적 움직임
-// ========================================
-
-function updateEnemies(dt) {
-
-  for(let i=enemies.length-1;i>=0;i--) {
-
-    const enemy=enemies[i];
-    const data=enemy.userData;
-
-    const dx=player.x-enemy.position.x;
-    const dz=player.z-enemy.position.z;
-
-    const distance=Math.hypot(dx,dz)||1;
-
-    data.phase+=dt*2;
-    data.contact=Math.max(0,data.contact-dt);
-
-    enemy.position.x+=dx/distance*data.speed*dt;
-    enemy.position.z+=dz/distance*data.speed*dt;
-
-    enemy.position.y=Math.sin(data.phase)*0.06;
-
-    data.body.rotation.y+=dt*1.2;
-    data.ring.rotation.z+=dt;
-
-    if(distance<data.r+0.7&&data.contact<=0) {
-
-      hurt(data.damage);
-      data.contact=0.7;
-    }
-
-    if(state!=='playing')return;
-  }
-}
-
-// ========================================
-// 19. 투사체 업데이트
-// ========================================
-
-function updateBullets(dt) {
-
-  for(let i=bullets.length-1;i>=0;i--) {
-
-    const bullet=bullets[i];
-
-    bullet.mesh.position.x+=bullet.vx*dt;
-    bullet.mesh.position.z+=bullet.vz*dt;
-
-    bullet.life-=dt;
-
-    let remove=bullet.life<=0;
-
-    for(let j=enemies.length-1;j>=0&&!remove;j--) {
-
-      const enemy=enemies[j];
-      const data=enemy.userData;
-
-      if(bullet.hit.has(enemy))continue;
-
-      const distance=Math.hypot(
-        bullet.mesh.position.x-enemy.position.x,
-        bullet.mesh.position.z-enemy.position.z
-      );
-
-      if(distance<data.r+0.17) {
-
-        data.hp-=bullet.damage;
-
-        bullet.hit.add(enemy);
-
-        burst(
-          enemy.position.x,
-          0.8,
-          enemy.position.z,
-          data.color,
-          4
-        );
-
-        if(data.hp<=0) {
-
-          score+=data.value;
-          kills++;
-
-          createOrb(
-            enemy.position.x,
-            enemy.position.z
-          );
-
-          burst(
-            enemy.position.x,
-            0.8,
-            enemy.position.z,
-            data.color,
-            12
-          );
-
-          scene.remove(enemy);
-          enemies.splice(j,1);
-        }
-
-        if(bullet.pierce>0) {
-          bullet.pierce--;
-        } else {
-          remove=true;
-        }
-      }
-    }
-
-    if(remove) {
-
-      scene.remove(bullet.mesh);
-      bullets.splice(i,1);
-    }
-  }
-}
-
-// ========================================
-// 20. 경험치 구슬 업데이트
-// ========================================
-
-function updateOrbs(dt) {
-
-  for(let i=orbs.length-1;i>=0;i--) {
-
-    const orb=orbs[i];
-    const mesh=orb.mesh;
-
-    orb.phase+=dt*2;
-
-    mesh.rotation.y+=dt*2;
-    mesh.position.y=0.4+Math.sin(orb.phase)*0.1;
-
-    const dx=player.x-mesh.position.x;
-    const dz=player.z-mesh.position.z;
-
-    const distance=Math.hypot(dx,dz);
-
-    if(distance<player.magnet) {
-
-      mesh.position.x+=dx*Math.min(1,dt*3);
-      mesh.position.z+=dz*Math.min(1,dt*3);
-    }
-
-    if(distance<0.8) {
-
-      scene.remove(mesh);
-      orbs.splice(i,1);
-
-      gainXP();
-
-      if(state!=='playing')return;
-    }
-  }
-}
-
-// ========================================
-// 21. 파티클 업데이트
-// ========================================
-
-function updateParticles(dt) {
-
-  for(let i=particles.length-1;i>=0;i--) {
-
-    const particle=particles[i];
-
-    particle.mesh.position.x+=particle.vx*dt;
-    particle.mesh.position.y+=particle.vy*dt;
-    particle.mesh.position.z+=particle.vz*dt;
-
-    particle.vy-=7*dt;
-    particle.life-=dt;
-
-    particle.mesh.material.opacity=
-      Math.max(0,particle.life/0.5);
-
-    if(particle.life<=0) {
-
-      scene.remove(particle.mesh);
-      particles.splice(i,1);
-    }
-  }
-}
-
-// ========================================
-// 22. 전체 게임 업데이트
-// ========================================
-
-function update(dt) {
-
-  if(state!=='playing'||!player)return;
-
-  elapsed+=dt;
-  left=Math.max(0,150-elapsed);
-
-  invuln=Math.max(0,invuln-dt);
-  dashTime=Math.max(0,dashTime-dt);
-  dashWait=Math.max(0,dashWait-dt);
-
-  movePlayer(dt);
-
-  spawnClock-=dt;
-
-  if(spawnClock<=0) {
-
-    spawnEnemy();
-
-    spawnClock=Math.max(
-      0.48,
-      1-elapsed*0.003
-    );
-  }
-
-  fireClock-=dt;
-
-  if(fireClock<=0) {
-
-    if(findClosestEnemy()) {
-      fireAtTarget();
-    }
-
-    fireClock=player.rate;
-  }
-
-  updateEnemies(dt);
-
-  if(state!=='playing')return;
-
-  updateBullets(dt);
-  updateOrbs(dt);
-
-  if(state!=='playing')return;
-
-  updateParticles(dt);
-
-  score+=dt*5;
-
-  updateHUD();
-
-  if(left<=0) {
-    finish(true);
-  }
-}
-
-// ========================================
-// 23. 키보드 입력
-// ========================================
-
-function onKeyDown(event) {
-
-  if([
-    'Space',
-    'ArrowUp',
-    'ArrowDown',
-    'ArrowLeft',
-    'ArrowRight'
-  ].includes(event.code)) {
-    event.preventDefault();
-  }
-
-  if(event.target instanceof HTMLInputElement)return;
-
-  keys[event.code]=true;
-
-  if(event.repeat)return;
-
-  // 일시정지
-  if(event.code==='KeyP'&&state==='playing') {
-
-    showScreen('pause');
-
-    for(const key of Object.keys(keys)) {
-      delete keys[key];
-    }
-
-  } else if(event.code==='KeyP'&&state==='pause') {
-
-    showScreen(null);
-
-  }
-
-  // 대시
-  else if(event.code==='Space'&&state==='playing'&&dashWait<=0) {
-
-    let x=
-      Number(!!(keys.KeyD||keys.ArrowRight))-
-      Number(!!(keys.KeyA||keys.ArrowLeft));
-
-    let z=
-      Number(!!(keys.KeyS||keys.ArrowDown))-
-      Number(!!(keys.KeyW||keys.ArrowUp));
-
-    let length=Math.hypot(x,z);
-
-    if(length===0) {
-
-      x=lastMoveX;
-      z=lastMoveZ;
-
-      length=Math.hypot(x,z)||1;
-    }
-
-    dashX=x/length;
-    dashZ=z/length;
-
-    dashTime=0.22;
-    dashWait=player.dashCD;
-
-    burst(
-      player.x,
-      0.8,
-      player.z,
-      player.color,
-      10
-    );
-  }
-}
-
-// ========================================
-// 24. 유닛 선택
-// ========================================
-
-function selectUnit(id) {
-
-  if(state!=='menu'||!units[id])return;
-
-  unitId=id;
-
-  document.querySelectorAll('.unit').forEach(button=> {
-
-    const selected=button.dataset.unit===id;
-
-    button.classList.toggle('selected',selected);
-
-    button.querySelector('em').textContent=
-      selected?'SELECTED':'SELECT';
-  });
-
-  $('profile').textContent=units[id].desc;
-}
-
-// ========================================
-// 25. 화면 크기 조정
-// ========================================
-
-function resize() {
-
-  if(!renderer||!camera)return;
-
-  const width=mount.clientWidth;
-  const height=mount.clientHeight;
-
-  if(!width||!height)return;
-
-  camera.aspect=width/height;
-
-  camera.updateProjectionMatrix();
-
-  renderer.setSize(width,height,false);
-}
-
-// ========================================
-// 26. 화면 렌더링
-// ========================================
-
+function spawn(){if(enemies.length>=30)return;const a=Math.random()*Math.PI*2,roll=Math.random();const type=elapsed<30?(roll<.72?'drone':'runner'):(roll<.46?'drone':roll<.72?'runner':'brute');const g=makeEnemy(type),d=g.userData;d.hp*=1+elapsed/160;d.speed+=elapsed*.006;g.position.set(Math.cos(a)*(R-1),0,Math.sin(a)*(R-1));scene.add(g);enemies.push(g)}
+
+function closest(){let target=null,best=14;for(const e of enemies){const d=Math.hypot(e.position.x-player.x,e.position.z-player.z);if(d<best){best=d;target=e}}return target}
+function fire(){const e=closest();if(!e)return;const dx=e.position.x-player.x,dz=e.position.z-player.z,len=Math.hypot(dx,dz)||1;const direction=new THREE.Vector3(dx/len,0,dz/len);const group=new THREE.Group();
+ const shot=add(group,new THREE.SphereGeometry(.14,12,10),new THREE.MeshBasicMaterial({color:player.color}));
+ const halo=add(group,new THREE.TorusGeometry(.19,.025,6,18),new THREE.MeshBasicMaterial({color:player.color,transparent:true,opacity:.9}));halo.rotation.x=Math.PI/2;
+ group.position.set(player.x,1.03,player.z);scene.add(group);
+ const trailMat=new THREE.LineBasicMaterial({color:player.color,transparent:true,opacity:.52});const trailGeo=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(player.x,1.03,player.z),new THREE.Vector3(player.x-direction.x*.8,1.03,player.z-direction.z*.8)]);const trail=new THREE.Line(trailGeo,trailMat);scene.add(trail);
+ bullets.push({mesh:group,trail,vx:direction.x*19,vz:direction.z*19,life:1.35,damage:player.damage,pierce:player.pierce,hit:new Set()});}
+function orb(x,z){const g=new THREE.Group();add(g,new THREE.OctahedronGeometry(.22),new THREE.MeshStandardMaterial({color:0xd3b5ff,emissive:0x8660ce,emissiveIntensity:2.5}));const h=add(g,new THREE.TorusGeometry(.28,.02,5,20),new THREE.MeshBasicMaterial({color:0xb39aff}));h.rotation.x=Math.PI/2;g.position.set(x,.4,z);scene.add(g);orbs.push({mesh:g,phase:Math.random()*6})}
+function burst(x,y,z,color,n=8){const count=Math.min(n,Math.max(0,150-particles.length));for(let i=0;i<count;i++){const m=add(scene,new THREE.SphereGeometry(.055+Math.random()*.04,6,6),new THREE.MeshBasicMaterial({color,transparent:true,opacity:1,blending:THREE.AdditiveBlending,depthWrite:false}),x,y,z);const a=Math.random()*Math.PI*2,s=1+Math.random()*4;particles.push({mesh:m,vx:Math.cos(a)*s,vy:Math.random()*3,vz:Math.sin(a)*s,life:.42,max:.42})}
+ if(n>=8){const ring=add(scene,new THREE.RingGeometry(.55,.72,32),new THREE.MeshBasicMaterial({color,transparent:true,opacity:.75,side:THREE.DoubleSide,depthWrite:false}),x,.12,z);ring.rotation.x=-Math.PI/2;particles.push({mesh:ring,life:.34,max:.34,ring:true})}}
+function updateHud(){if(!player)return;$('hp').textContent=Math.max(0,Math.ceil(player.hp));$('hpbar').style.width=Math.max(0,player.hp/player.maxHp*100)+'%';$('level').textContent=String(level).padStart(2,'0');$('time').textContent=`${String(Math.floor(left/60)).padStart(2,'0')}:${String(Math.floor(left%60)).padStart(2,'0')}`;$('kills').textContent=String(kills).padStart(3,'0');$('xptext').textContent=`${xp} / ${need}`;$('xpbar').style.width=Math.min(100,xp/need*100)+'%'}
+function showScreen(id=null){state=id===null?'playing':($state[id]||'menu');for(const name of ['start','pause','upgrade','result'])$(name).classList.toggle('hidden',name!==id)}
+function removeWorld(){for(const list of [enemies,bullets,orbs,particles]){for(const item of list){if(item.trail)disposeObject(item.trail);disposeObject(item.mesh||item)}list.length=0}if(playerMesh)disposeObject(playerMesh);playerMesh=null;player=null;keys=Object.create(null)}
+function startGame(){removeWorld();elapsed=0;left=150;score=0;kills=0;level=1;xp=0;need=30;spawnClock=.45;fireClock=.18;invuln=0;dashTime=0;dashWait=0;cameraShake=0;addPlayer();updateHud();$('saveBtn').disabled=false;$('saveBtn').textContent='SAVE';showScreen(null)}
+function showUpgrade(){if(state!=='playing')return;showScreen('upgrade');const host=$('choices');host.replaceChildren();const pool=[...upgrades];for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]]}pool.slice(0,3).forEach(u=>{const b=document.createElement('button');b.className='upgrade';const icon=document.createElement('span'),name=document.createElement('b'),desc=document.createElement('small');icon.textContent=u.icon;name.textContent=u.name;desc.textContent=u.desc;b.append(icon,name,desc);b.onclick=()=>{u.apply(player);showScreen(null);updateHud()};host.append(b)})}
+function gainXP(){xp+=8;if(xp>=need){xp-=need;level++;need=30+level*14;showUpgrade()}}
+function hurt(d){if(invuln>0||state!=='playing')return;player.hp-=d;invuln=.8;cameraShake=.24;burst(player.x,.8,player.z,0xff718e,12);if(player.hp<=0){player.hp=0;finish(false)}updateHud()}
+function finish(win){if(state!=='playing')return;showScreen('result');$('resultKicker').textContent=win?'TRIAL COMPLETE':'SIGNAL LOST';$('resultTitle').textContent=win?'생존 성공.':'전투 종료.';$('finalScore').textContent=Math.floor(score).toLocaleString();$('resultText').textContent=`제거 ${kills}기 · 레벨 ${level} · 생존 ${Math.floor(elapsed)}초`;const best=Math.max(score,Number(safeGet('vzBest','0'))||0);safeSet('vzBest',Math.floor(best));$('best').textContent=Math.floor(best).toLocaleString();$('nickname').value=safeGet('vzNick','')}
+function renderRanks(){const host=$('ranks');host.replaceChildren();const a=getScores().sort((x,y)=>Number(y.score)-Number(x.score)).slice(0,5);if(!a.length){host.textContent='아직 기록이 없어.';return}a.forEach((v,i)=>{const row=document.createElement('div');row.className='rank';const n=document.createElement('span'),s=document.createElement('b');n.textContent=`${i+1}. ${v.name}`;s.textContent=Number(v.score).toLocaleString();row.append(n,s);host.append(row)})}
+function saveScore(){const name=$('nickname').value.trim().slice(0,12)||'PLAYER';safeSet('vzNick',name);const a=getScores();a.push({name,score:Math.floor(score)});a.sort((x,y)=>Number(y.score)-Number(x.score));safeSet('vzScores',JSON.stringify(a.slice(0,30)));renderRanks();$('saveBtn').textContent='SAVED';$('saveBtn').disabled=true}
+function updatePlayer(dt){let x=Number(!!(keys.KeyD||keys.ArrowRight))-Number(!!(keys.KeyA||keys.ArrowLeft)),z=Number(!!(keys.KeyS||keys.ArrowDown))-Number(!!(keys.KeyW||keys.ArrowUp)),len=Math.hypot(x,z);if(len>0){x/=len;z/=len;lastMoveX=x;lastMoveZ=z}if(dashTime>0){x=dashX;z=dashZ}const boost=dashTime>0?2.75:1;player.x+=x*player.speed*boost*dt;player.z+=z*player.speed*boost*dt;const r=Math.hypot(player.x,player.z),limit=R-1.2;if(r>limit){player.x*=limit/r;player.z*=limit/r}playerMesh.position.set(player.x,Math.sin(elapsed*5)*.055,player.z);if(x||z)playerMesh.rotation.y=Math.atan2(x,z);const u=playerMesh.userData;u.torso.rotation.z=Math.sin(elapsed*4)*.025;u.head.rotation.y=Math.sin(elapsed*2)*.08;u.ring.rotation.z+=dt*1.4;u.ring2.rotation.z-=dt*.9;u.chestCore.scale.setScalar(1+Math.sin(elapsed*8)*.1);u.thrusterL.scale.y=.8+Math.sin(elapsed*22)*.15;u.thrusterR.scale.y=.8+Math.sin(elapsed*22+1)*.15;u.legL.rotation.x=Math.sin(elapsed*8)*.08*(len>0?1:0);u.legR.rotation.x=-u.legL.rotation.x;playerMesh.visible=invuln<=0||Math.floor(elapsed*18)%2===0}
+function updateEnemies(dt){for(let i=enemies.length-1;i>=0;i--){const e=enemies[i],d=e.userData,dx=player.x-e.position.x,dz=player.z-e.position.z,dist=Math.hypot(dx,dz)||1;d.phase+=dt*2;d.contact=Math.max(0,d.contact-dt);e.position.x+=dx/dist*d.speed*dt;e.position.z+=dz/dist*d.speed*dt;e.position.y=Math.sin(d.phase)*.075;d.core.rotation.y+=dt*(d.type==='brute' ? .7 : 1.8);d.under.rotation.z+=dt*1.2;if(d.type==='runner')e.rotation.y=Math.atan2(dx,dz);if(dist<d.r+.75&&d.contact<=0){hurt(d.damage);d.contact=.75;if(state!=='playing')return}}}
+function updateBullets(dt){for(let i=bullets.length-1;i>=0;i--){const b=bullets[i];b.mesh.position.x+=b.vx*dt;b.mesh.position.z+=b.vz*dt;b.mesh.rotation.z+=dt*8;b.life-=dt;const p=b.mesh.position;b.trail.geometry.setFromPoints([new THREE.Vector3(p.x,p.y,p.z),new THREE.Vector3(p.x-b.vx*.045,p.y,p.z-b.vz*.045)]);let remove=b.life<=0;for(let j=enemies.length-1;j>=0&&!remove;j--){const e=enemies[j],d=e.userData;if(b.hit.has(e))continue;if(Math.hypot(p.x-e.position.x,p.z-e.position.z)<d.r+.2){d.hp-=b.damage;b.hit.add(e);burst(e.position.x,.8,e.position.z,d.color,5);if(d.hp<=0){score+=d.value;kills++;orb(e.position.x,e.position.z);burst(e.position.x,.8,e.position.z,d.color,14);disposeObject(e);enemies.splice(j,1)}if(b.pierce>0)b.pierce--;else remove=true}}if(remove){disposeObject(b.trail);disposeObject(b.mesh);bullets.splice(i,1)}}}
+function updateOrbs(dt){for(let i=orbs.length-1;i>=0;i--){const o=orbs[i],m=o.mesh;o.phase+=dt*2;m.rotation.y+=dt*2;m.rotation.z+=dt;m.position.y=.4+Math.sin(o.phase)*.12;const dx=player.x-m.position.x,dz=player.z-m.position.z,dist=Math.hypot(dx,dz);if(dist<player.magnet){m.position.x+=dx*Math.min(1,dt*3.2);m.position.z+=dz*Math.min(1,dt*3.2)}if(dist<.8){disposeObject(m);orbs.splice(i,1);gainXP();if(state!=='playing')return}}}
+function updateParticles(dt){for(let i=particles.length-1;i>=0;i--){const p=particles[i];p.life-=dt;if(p.ring){const t=1-p.life/p.max;p.mesh.scale.setScalar(.4+t*2.2);p.mesh.material.opacity=Math.max(0,p.life/p.max)*.8}else{p.mesh.position.x+=p.vx*dt;p.mesh.position.y+=p.vy*dt;p.mesh.position.z+=p.vz*dt;p.vy-=6*dt;p.mesh.material.opacity=Math.max(0,p.life/p.max)}if(p.life<=0){disposeObject(p.mesh);particles.splice(i,1)}}}
+function update(dt){if(state!=='playing'||!player)return;elapsed+=dt;left=Math.max(0,150-elapsed);invuln=Math.max(0,invuln-dt);dashTime=Math.max(0,dashTime-dt);dashWait=Math.max(0,dashWait-dt);updatePlayer(dt);spawnClock-=dt;if(spawnClock<=0){spawn();spawnClock=Math.max(.48,1-elapsed*.003)}fireClock-=dt;if(fireClock<=0){if(closest())fire();fireClock=player.rate}updateEnemies(dt);if(state!=='playing')return;updateBullets(dt);updateOrbs(dt);if(state!=='playing')return;updateParticles(dt);score+=dt*5;updateHud();if(left<=0)finish(true)}
+function onKeyDown(e){if(['Space','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code))e.preventDefault();if(e.target instanceof HTMLInputElement)return;keys[e.code]=true;if(e.repeat)return;if(e.code==='KeyP'&&state==='playing'){showScreen('pause');keys=Object.create(null)}else if(e.code==='KeyP'&&state==='pause'){showScreen(null)}else if(e.code==='Space'&&state==='playing'&&dashWait<=0&&player){let x=Number(!!(keys.KeyD||keys.ArrowRight))-Number(!!(keys.KeyA||keys.ArrowLeft)),z=Number(!!(keys.KeyS||keys.ArrowDown))-Number(!!(keys.KeyW||keys.ArrowUp)),len=Math.hypot(x,z);if(!len){x=lastMoveX;z=lastMoveZ;len=Math.hypot(x,z)||1}dashX=x/len;dashZ=z/len;dashTime=.23;dashWait=player.dashCD;cameraShake=.1;burst(player.x,.55,player.z,player.color,10)}}
+function selectUnit(id){if(state!=='menu'||!units[id])return;unitId=id;document.querySelectorAll('.unit').forEach(b=>{const yes=b.dataset.unit===id;b.classList.toggle('selected',yes);b.querySelector('em').textContent=yes?'SELECTED':'SELECT'});$('profile').textContent=units[id].desc}
+function resize(){if(!renderer||!camera)return;const w=mount.clientWidth,h=mount.clientHeight;if(!w||!h)return;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h,false)}
+let cameraTarget=null;
+function updateCamera(dt){if(!cameraTarget)return;const px=player?player.x:0,pz=player?player.z:0;const desired=new THREE.Vector3(px,27,pz+29);camera.position.lerp(desired,Math.min(1,dt*3.5));cameraTarget.set(px,0,pz);if(cameraShake>0){cameraShake=Math.max(0,cameraShake-dt);camera.position.x+=(Math.random()-.5)*cameraShake*1.8;camera.position.y+=(Math.random()-.5)*cameraShake*1.2}camera.lookAt(cameraTarget)}
 let lastFrame=0;
-
-function animate(timestamp) {
-
-  requestAnimationFrame(animate);
-
-  const dt=lastFrame
-    ? Math.min((timestamp-lastFrame)/1000,0.04)
-    : 0;
-
-  lastFrame=timestamp;
-
-  if(state==='playing') {
-    update(dt);
-  }
-
-  if(arena) {
-    arena.rotation.y=Math.sin(timestamp*0.00012)*0.01;
-  }
-
-  if(renderer&&scene&&camera) {
-    renderer.render(scene,camera);
-  }
-}
-
-// ========================================
-// 27. 오류 표시
-// ========================================
-
-function showEngineError(error) {
-
-  console.error('VECTOR ZERO 초기화 오류:',error);
-
-  mount.innerHTML=`
-    <div class="errorbox">
-      <b>3D 엔진을 시작하지 못했어.</b>
-      <br>
-      인터넷 연결을 확인하고 페이지를 새로고침해 줘.
-      학교 네트워크에서 외부 CDN이 차단된 경우에도 발생할 수 있어.
-      <br><br>
-      <small>오류 내용: <code></code></small>
-    </div>
-  `;
-
-  const code=mount.querySelector('code');
-
-  if(code) {
-    code.textContent=
-      error&&error.message
-      ? error.message
-      : String(error);
-  }
-}
-
-// ========================================
-// 28. 게임 초기화
-// ========================================
-
-async function init() {
-
-  try {
-
-    // Three.js 3D 엔진 불러오기
-    THREE=await import(
-      'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js'
-    );
-
-    // 장면 생성
-    scene=new THREE.Scene();
-
-    scene.background=new THREE.Color(0x081326);
-
-    scene.fog=new THREE.FogExp2(
-      0x081326,
-      0.027
-    );
-
-    // 카메라
-    camera=new THREE.PerspectiveCamera(
-      47,
-      1,
-      0.1,
-      100
-    );
-
-    camera.position.set(0,29,32);
-    camera.lookAt(0,0,0);
-
-    // 렌더러
-    renderer=new THREE.WebGLRenderer({
-      antialias:true,
-      powerPreference:'high-performance'
-    });
-
-    renderer.setPixelRatio(
-      Math.min(window.devicePixelRatio||1,1.5)
-    );
-
-    renderer.setSize(
-      mount.clientWidth||800,
-      mount.clientHeight||560,
-      false
-    );
-
-    renderer.outputColorSpace=THREE.SRGBColorSpace;
-
-    renderer.toneMapping=THREE.ACESFilmicToneMapping;
-
-    renderer.shadowMap.enabled=true;
-
-    mount.appendChild(renderer.domElement);
-
-    // 조명
-    scene.add(
-      new THREE.HemisphereLight(
-        0xaacaff,
-        0x17243e,
-        2
-      )
-    );
-
-    const mainLight=new THREE.DirectionalLight(
-      0xcaf9ff,
-      3
-    );
-
-    mainLight.position.set(-7,18,9);
-    mainLight.castShadow=true;
-
-    mainLight.shadow.mapSize.set(1024,1024);
-
-    scene.add(mainLight);
-
-    const violet=new THREE.PointLight(
-      0x9876ff,
-      20,
-      26
-    );
-
-    violet.position.set(9,7,-8);
-
-    scene.add(violet);
-
-    const mint=new THREE.PointLight(
-      0x52f4d0,
-      16,
-      24
-    );
-
-    mint.position.set(-10,5,8);
-
-    scene.add(mint);
-
-    // 경기장 생성
-    makeArena();
-
-    // 기록 불러오기
-    renderRanks();
-    updateBest();
-
-    // 유닛 선택
-    document.querySelectorAll('.unit').forEach(button=> {
-
-      button.addEventListener('click',()=> {
-        selectUnit(button.dataset.unit);
-      });
-
-    });
-
-    // 버튼 연결
-    $('startBtn').addEventListener(
-      'click',
-      startGame
-    );
-
-    $('resumeBtn').addEventListener(
-      'click',
-      ()=>showScreen(null)
-    );
-
-    $('retryBtn').addEventListener(
-      'click',
-      startGame
-    );
-
-    $('homeBtn').addEventListener(
-      'click',
-      ()=> {
-        removeWorld();
-        showScreen('start');
-        renderRanks();
-      }
-    );
-
-    $('saveBtn').addEventListener(
-      'click',
-      saveScore
-    );
-
-    // 키보드 이벤트
-    window.addEventListener(
-      'keydown',
-      onKeyDown
-    );
-
-    window.addEventListener(
-      'keyup',
-      event=> {
-        delete keys[event.code];
-      }
-    );
-
-    // 창을 벗어나면 일시정지
-    window.addEventListener(
-      'blur',
-      ()=> {
-
-        for(const key of Object.keys(keys)) {
-          delete keys[key];
-        }
-
-        if(state==='playing') {
-          showScreen('pause');
-        }
-      }
-    );
-
-    // 화면 크기 대응
-    window.addEventListener(
-      'resize',
-      resize
-    );
-
-    if('ResizeObserver' in window) {
-
-      new ResizeObserver(resize).observe(mount);
-    }
-
-    resize();
-
-    requestAnimationFrame(animate);
-
-  } catch(error) {
-
-    showEngineError(error);
-
-  }
-}
-
-// ========================================
-// 게임 실행
-// ========================================
-
+function animate(t){requestAnimationFrame(animate);const dt=lastFrame?Math.min((t-lastFrame)/1000,.04):0;lastFrame=t;if(state==='playing')update(dt);if(arena?.userData){arena.userData.coreRing.rotation.z+=dt*.35;arena.userData.inner.rotation.z-=dt*.55;arena.userData.rim.rotation.z+=dt*.08;arena.userData.rim2.rotation.z-=dt*.11}updateCamera(dt);renderer.render(scene,camera)}
+function showEngineError(error){console.error('VECTOR ZERO 초기화 오류:',error);mount.innerHTML=`<div class="errorbox"><b>3D 엔진을 시작하지 못했어.</b><br>인터넷 연결을 확인하고 페이지를 새로고침해 줘. 외부 CDN이 차단된 경우에도 발생할 수 있어.<br><br><small>오류: <code></code></small></div>`;const code=mount.querySelector('code');if(code)code.textContent=error?.message||String(error)}
+async function init(){try{
+ THREE=await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js');
+ scene=new THREE.Scene();scene.background=new THREE.Color(0x070d1b);scene.fog=new THREE.FogExp2(0x070d1b,.018);
+ camera=new THREE.PerspectiveCamera(43,1,.1,120);camera.position.set(0,27,29);camera.lookAt(0,0,0);cameraTarget=new THREE.Vector3(0,0,0);
+ renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance',alpha:false});renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.35));renderer.setSize(mount.clientWidth||800,mount.clientHeight||560,false);renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.15;renderer.shadowMap.enabled=false;mount.appendChild(renderer.domElement);
+ scene.add(new THREE.HemisphereLight(0xb9d7ff,0x10182b,2.1));
+ const key=new THREE.DirectionalLight(0xd6f5ff,2.5);key.position.set(-9,19,8);scene.add(key);
+ const violet=new THREE.PointLight(0x9276ff,38,36);violet.position.set(10,8,-9);scene.add(violet);
+ const cyan=new THREE.PointLight(0x52f4d0,34,34);cyan.position.set(-11,7,10);scene.add(cyan);
+ const back=new THREE.PointLight(0xff668f,12,24);back.position.set(0,5,-15);scene.add(back);
+ makeArena();renderRanks();$('best').textContent=Number(safeGet('vzBest','0')).toLocaleString();
+ document.querySelectorAll('.unit').forEach(b=>b.addEventListener('click',()=>selectUnit(b.dataset.unit)));
+ $('startBtn').addEventListener('click',startGame);$('resumeBtn').addEventListener('click',()=>showScreen(null));$('retryBtn').addEventListener('click',startGame);
+ $('homeBtn').addEventListener('click',()=>{removeWorld();showScreen('start');renderRanks()});$('saveBtn').addEventListener('click',saveScore);
+ window.addEventListener('keydown',onKeyDown);window.addEventListener('keyup',e=>delete keys[e.code]);window.addEventListener('blur',()=>{keys=Object.create(null);if(state==='playing')showScreen('pause')});window.addEventListener('resize',resize);
+ if('ResizeObserver' in window)new ResizeObserver(resize).observe(mount);resize();requestAnimationFrame(animate);
+ }catch(error){showEngineError(error)}}
 init();
-
 </script>
 </body>
 </html>
